@@ -1,0 +1,175 @@
+// ======== header ===========
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	background-color: $primary-color;
+
+	&-container {
+		padding: 10px;
+		@include flex(center, space-between);
+
+		&-logo {
+			@include flex(center, flex-start);
+			cursor: pointer;
+
+			& img {
+				width: 70px;
+				height: 70px;
+				object-fit: contain;
+			}
+
+			& h1 {
+				text-transform: uppercase;
+				font-style: italic;
+				color: $txt-white;
+				font-family: "Sansita", sans-serif !important;
+			}
+		}
+
+		&-main {
+			@include flex(center, space-between);
+			flex-direction: row;
+			color: $white-color;
+
+			@include tablet {
+				display: none;
+			}
+
+			.menu-item {
+				padding: 0 20px;
+				@include flex(center, center);
+				flex-direction: column;
+				position: relative;
+
+				&-name {
+					a {
+						text-decoration: none;
+						color: $txt-white;
+						font-weight: 200 !important;
+					}
+
+					&::before {
+						content: '';
+						position: absolute;
+						bottom: -19px;
+						width: 0;
+						height: 5px;
+						left: 50%;
+						transform: translateX(-50%);
+						background-color: $white-color;
+						transition: width 0.5s ease-in;
+					}
+					
+					&:hover::before,
+					&.active::before {
+						width: 100%;
+					}
+				}
+
+				&-icon {
+					position: relative;
+					margin-bottom: 5px;
+
+					&-cart {
+						position: absolute;
+						@include flex (center,center);
+						width: 30px;
+						height: 30px;
+						border-radius: 50%;
+						background-color: #FFC5AC;
+						color: $primary-color;
+						font-size: 18px;
+						top: -5px;
+						right: -30px;
+					}
+				}
+			}
+		}
+
+		&-toggle {
+			color: $white-color;
+			cursor: pointer;
+			display: none;
+
+			@include tablet {
+				display: block;
+			}
+		}
+	}
+}
+
+// =========== sidebar ===============
+.sidebar {
+	position: fixed;
+	z-index: 100;
+	width: 250px;
+	height: 100vh;
+	background-color: $primary-color;
+	color: $white-color;
+	display: grid;
+	align-items: center;
+	top: 0;
+	right: -500px;
+	transition: 0.3s ease-in-out;
+
+	&.active {
+		right: 0;
+	}
+
+	&-icon {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 28px;
+		color: $white-color;
+		cursor: pointer;
+	}
+
+	&-menu {
+		text-align: center;
+		margin: 0 auto;
+
+		a {
+			color: $white-color;
+			text-decoration: none;
+		}
+
+		li {
+			padding: 15px 0;
+			font-weight: 500;
+			position: relative;
+			cursor: pointer;
+			list-style: none;
+
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				width: 0;
+				height: 5px;
+				left: 50%;
+				transform: translateX(-50%);
+				background-color: $white-color;
+				transition: width 0.3s ease-in;
+			}
+			
+			&:hover::before,
+			&.active::before {
+				width: 100%;
+			}
+		}
+	}
+
+	&-footer {
+		display: flex;
+		justify-content: center;
+		margin: 0 auto;
+		padding: 10px 14px;
+		background-color: red;
+		transition: 0.2s ease-in;
+		cursor: pointer;
+	}
+}
