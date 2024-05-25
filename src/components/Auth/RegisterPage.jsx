@@ -1,4 +1,5 @@
 import { Lock, Mail, Visibility, VisibilityOff } from "@mui/icons-material";
+import authApi from "../../api/authApi";
 import {
   Box,
   Button,
@@ -21,26 +22,27 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [successful, setSuccessful] = useState(false);
+  const [message, setMessage] = useState("");
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required.")
-      .email("This is not email.")
+      .email("This is not a valid email.")
       .matches(
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-		),
-		password: Yup.string()
-		.required('Password is required.')
-		.min(8, '8-12 characters, 1 uppercase letter, 1 number, 1 special letter.')
-		.max(12, '8-12 characters, 1 uppercase letter, 1 number, 1 special letter.')
-		.matches(
-      // /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/,
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@#$!%?&^*+/-])[A-Za-z\d$@#$!%?&*^+/-]{8,12}/,
-			'8-12 characters, 1 uppercase letter, 1 number, 1 special letter.'
-		),
-	confirmPassword: Yup.string()
-		.required('Confirm password is required.')
-		.oneOf([Yup.ref('password'), null], 'Password does not match.')
+      ),
+    password: Yup.string()
+      .required("Password is required.")
+      .min(8, "8-12 characters, 1 uppercase letter, 1 number, 1 special letter.")
+      .max(12, "8-12 characters, 1 uppercase letter, 1 number, 1 special letter.")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@#$!%?&^*+/-])[A-Za-z\d$@#$!%?&*^+/-]{8,12}$/,
+        "8-12 characters, 1 uppercase letter, 1 number, 1 special letter."
+      ),
+    confirmPassword: Yup.string()
+      .required("Confirm password is required.")
+      .oneOf([Yup.ref("password"), null], "Password does not match."),
   });
 
   const {
@@ -63,18 +65,33 @@ export default function RegisterPage() {
     event.preventDefault();
   };
 
-  const handleSubmitRegister = (data) => {
-		localStorage.setItem(LOCAL_STORAGE.USER_INFO, JSON.stringify({
-			email: data.email,
-			password: data.password
-		}));
-		navigate('/my-page');
+  const handleSubmitRegister = async (data) => {
+    try {
+      const response = await authApi.register(data);
+      localStorage.setItem(LOCAL_STORAGE.ACCESS_TOKEN, response.data.accessToken);
+      localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, response.data.refreshToken);
+      localStorage.setItem(LOCAL_STORAGE.USER, JSON.stringify(response.data.user));
+      setSuccessful(true);
+      alert("Registration successful!");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      alert("Registration failed!");
+      const resMessage =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      setMessage(resMessage);
+      setSuccessful(false);
+    }
   };
+
   return (
     <div className="my-page">
       <Header />
-			<div className="my-page-register">
-			<div className="my-page-register-banner"></div>
+      <div className="my-page-register">
+        <div className="my-page-register-banner"></div>
         <div className="register">
           <Typography
             color="primary"
@@ -100,8 +117,7 @@ export default function RegisterPage() {
                     size="small"
                     variant="outlined"
                     type="email"
-                    value={field.value}
-                    onChange={field.onChange}
+                    {...field}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -112,12 +128,10 @@ export default function RegisterPage() {
                   />
                 )}
               />
-              {errors.email ? (
+              {errors.email && (
                 <Typography color="red" fontSize={12}>
                   {errors.email?.message}
                 </Typography>
-              ) : (
-                ""
               )}
             </Box>
             <Box my={2}>
@@ -135,8 +149,7 @@ export default function RegisterPage() {
                     size="small"
                     variant="outlined"
                     type={showPassword ? "text" : "password"}
-                    value={field.value}
-                    onChange={field.onChange}
+                    {...field}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -158,13 +171,11 @@ export default function RegisterPage() {
                     }}
                   />
                 )}
-							/>
-							{errors.password ? (
+              />
+              {errors.password && (
                 <Typography color="red" fontSize={12}>
                   {errors.password?.message}
                 </Typography>
-              ) : (
-                ""
               )}
             </Box>
             <Box my={2}>
@@ -182,10 +193,9 @@ export default function RegisterPage() {
                     size="small"
                     variant="outlined"
                     type={showConfirmPassword ? "text" : "password"}
-                    value={field.value}
-                    onChange={field.onChange}
-										InputProps={{
-											startAdornment: (
+                    {...field}
+                    InputProps={{
+                      startAdornment: (
                         <InputAdornment position="start">
                           <Lock />
                         </InputAdornment>
@@ -205,19 +215,17 @@ export default function RegisterPage() {
                     }}
                   />
                 )}
-							/>
-							{errors.confirmPassword ? (
+              />
+              {errors.confirmPassword && (
                 <Typography color="red" fontSize={12}>
                   {errors.confirmPassword?.message}
                 </Typography>
-              ) : (
-                ""
               )}
-						</Box>
+            </Box>
             <div className="term">
-              By creating account, I have agreed to the
-							<a href="#/"> terms and conditions.</a>
-						</div>
+              By creating an account, I have agreed to the
+              <a href="#/"> terms and conditions.</a>
+            </div>
             <Box>
               <Button
                 variant="contained"
@@ -225,8 +233,8 @@ export default function RegisterPage() {
                 sx={{
                   width: "100%",
                   fontWeight: "500",
-									textTransform: "initial",
-									backgroundColor: '#A1A1A1'
+                  textTransform: "initial",
+                  backgroundColor: '#A1A1A1',
                 }}
                 onClick={handleSubmit(handleSubmitRegister)}
               >
@@ -278,6 +286,16 @@ export default function RegisterPage() {
             </Box>
           </div>
         </div>
+        {message && (
+          <div className="form-group">
+            <div
+              className={successful ? "alert alert-success" : "alert alert-danger"}
+              role="alert"
+            >
+              {message}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
