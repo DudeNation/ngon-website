@@ -1,5 +1,5 @@
-import { ENDPOINT } from "file:///D:/ngon-master/client/src/constants/endpoint.js";
-import axiosClient from "file:D:/ngon-master/client/src/api/axiosClient.mjs";
+import { ENDPOINT } from "../constants/endpoint.js";
+import axiosClient from "./axiosClient.js";
 
 const menuApi = {
 	getAllNoodle: () => {
