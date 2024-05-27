@@ -1,5 +1,5 @@
 import axiosClient from './axiosClient.js';
-import { ENDPOINT } from '../constants/endpoint.js';
+import { ENDPOINT } from 'file:///D:/ngon-master/client/src/constants/endpoint.js';
 
 const authApi = {
     login: (data) => {
