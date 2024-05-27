@@ -1,0 +1,16 @@
+{
+    "name": "ngon-master",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+      "client": "npm start --prefix client",
+      "server": "npm run dev --prefix server",
+      "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "devDependencies": {
+      "concurrently": "^5.3.0"
+    },
+    "author": "",
+    "license": "ISC"
+  }
