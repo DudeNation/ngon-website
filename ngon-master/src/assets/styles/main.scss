@@ -1,0 +1,29 @@
+ @import './variables';
+ @import './mixin';
+
+//  common
+@import './common/header';
+@import './common/banner';
+@import './common/footer';
+@import './common/card-item';
+@import './common/card-detail';
+@import './common/menu-page';
+@import './common/my-page';
+@import './common/auth';
+@import './common/our-brand';
+@import './common/my-page-auth';
+@import './common/my-cart';
+@import './common/add-credit-card';
+
+.container {
+	width: 100%;
+	display: grid;
+  grid-template-columns: var(--sidebar-width) auto;
+	padding: 100px 40px;
+	background-color: $gray-color;
+
+	@include mobile {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}

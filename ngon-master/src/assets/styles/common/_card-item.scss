@@ -1,0 +1,97 @@
+.menu-card-item {
+	width: 90%;
+	margin: 10px auto;
+	background-color: $white-color;
+	box-shadow: $box-shadow;
+	border-radius: 10px;
+	cursor: pointer;
+
+	@include tablet {
+		width: 100%;
+	}
+
+	&__img img {
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+
+		@include mobile {
+			height: 100px;
+		}
+	}
+
+	&__main {
+		padding: 8px;
+
+		&-name {
+			color: $primary-color;
+			@include flex (center, space-between);
+
+			@include mobile {
+				height: 30px;
+			}
+		}
+
+		&-info {
+			@include flex (center, space-between);
+			margin-top: 5px;
+
+			.info-item {
+				&-desc {
+					color: $txt-gray;
+					margin: 5px 0;
+
+					@include pc {
+						display: inline-block;
+						width: 250px;
+						white-space: nowrap;
+						overflow: hidden !important;
+						text-overflow: ellipsis;
+					}
+
+					@include mobile {
+						font-size: 14px;
+						display: -webkit-box;
+						-webkit-line-clamp: 2;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+					}
+				}
+
+				&-rating {
+					@include flex(center, flex-start);
+					color: $txt-gray2;
+
+					@include mobile {
+						font-size: 10px;
+					}
+
+					.rating-star {
+						@include mobile {
+							font-size: 13px;
+						}
+					}
+				}
+			}
+
+			.info-btn{
+				width: 40px;
+				height: 40px;
+				background-color: $primary-color;
+				color: $white-color;
+				border-radius: 50%;
+				font-size: 32px;
+				font-weight: 500;
+				@include flex(center, center);
+
+				@include mobile {
+					width: 24px;
+					height: 24px;
+					padding: 5px;
+				}
+			}
+		}
+	}
+}

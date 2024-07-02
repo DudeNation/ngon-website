@@ -1,0 +1,91 @@
+// add-credit card
+.credit-card {
+	width: 100%;
+	&-wrapper {
+		@include flex(center, center);
+		flex-direction: column;
+		color: $white-color;
+		// width: 400px;
+		// height: 250px;
+		border-radius: 8px;
+		border: 1px solid $white-color;
+
+		.wrapper-input {
+			width: 100%;
+			input {
+				width: 100%;
+				padding: 10px;
+				border-radius: 5px;
+				outline: none;
+				border: 2px solid $txt-gray2;
+				transition: 0.2s ease-in all;
+
+				&:focus {
+					border: 2px solid $primary-color !important;
+				}
+			}
+		}
+
+		.wrapper-err {
+			font-size: 13px;
+			font-weight: bold;
+			color: red;
+		}
+
+		.wrapper-button {
+			width: 100%;
+			display: flex;
+
+			div {
+				margin-left: 25px;
+
+				button {
+					padding: 6px;
+					border-radius: 10px;
+					width: 80px;
+				}
+
+				.btn-grad {
+					width: 100%;
+					display: flex;
+
+					div {
+						margin-left: 25px;
+
+						button {
+							padding: 6px;
+							border-radius: 10px;
+							width: 80px;
+						}
+
+						.btn-grad {
+							background-image: linear-gradient(to right,
+									#f09819 0%,
+									#edde5d 51%,
+									#f09819 100%);
+						}
+
+						.btn-grad:hover {
+							background-position: right center;
+						}
+					}
+				}
+			}
+		}
+
+		.wrapper-other {
+			display: flex;
+			button {
+				margin-right: 10px;
+			}
+			.expiry {
+				display: flex;
+				flex-direction: column;
+			}
+			.cvc {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
+}

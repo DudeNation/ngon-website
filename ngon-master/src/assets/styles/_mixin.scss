@@ -1,0 +1,41 @@
+@mixin flex($align-item, $justify-content) {
+	display: flex;
+	align-items: $align-item;
+	justify-content: $justify-content;
+}
+;
+
+@mixin mobile {
+	@media screen and (max-width: 600px) {
+		@content
+	}
+}
+;
+
+@mixin tablet {
+	@media screen and (max-width: 1024px) {
+		@content
+	}
+}
+;
+
+@mixin pc {
+	@media (min-width: 601px)  {
+		@content;
+	}
+}
+;
+
+@mixin tablet2 {
+	@media (min-width: 601px) and (max-width: 1024px) {
+		@content;
+	}
+}
+;
+
+@mixin tabletSpecialImage {
+	@media screen and (max-width: 1234px) {
+		@content
+	}
+}
+;

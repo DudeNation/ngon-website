@@ -1,0 +1,49 @@
+.menu-list {
+	@include flex(center, center);
+	width: 50%;
+	margin: 20px auto;
+
+	@include mobile {
+		width: 100%;
+	}
+	@include tablet2 {
+		width: 80%;
+	}
+
+	div {
+		width: 50%;
+		font-size: 20px;
+		text-align: center;
+		padding: 10px;
+		transition: 0.3s ease-in;
+		position: relative;
+		color: $primary-color;
+		cursor: pointer;
+
+		@include mobile {
+			width: 100%;
+			font-size: 17px;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			width: 0;
+			height: 3px;
+			background-color: $primary-color;
+			transition: 0.3s ease-in;
+		}
+
+		&:hover,
+		&.active {
+			font-weight: 500;
+		}
+
+		&:hover::after,
+		&.active::after {
+			width: 100%;
+			right: 0;
+		}
+	}
+}
