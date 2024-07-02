@@ -1,0 +1,207 @@
+.our-brand {
+	width: 100%;
+
+	&-container {
+		margin-top: 80px;
+
+		&-first,
+		&-second,
+		&-third {
+			position: relative;
+		}
+
+		.our-brand-common {
+			&-img1 {
+				height: 100vh;
+				@include mobile {
+					height: 70vh;
+				}
+			}
+
+			&-img2 {
+				height: 100vh;
+				@include mobile {
+					height: 70vh;
+				}
+			}
+
+			&-img3 {
+				height: 100vh;
+				@include mobile {
+					height: 70vh;
+				}
+			}
+
+			&-img1 img,
+			&-img2 img,
+			&-img3 img {
+				width: 100%;
+				height: 100vh;
+				object-fit: cover;
+			}
+
+			&-text1 {
+				position: absolute;
+				top: 10%;
+				left: 60%;
+				text-align: right;
+				width: 550px;
+				@include mobile {
+					left: 0;
+					text-align: right;
+					width: unset !important;
+					padding: 0 10px;
+				}
+				@include tablet {
+					left: 0;
+					text-align: right;
+					width: unset !important;
+					padding: 0 10px;
+				}
+
+				& h1 {
+					font-weight: bold;
+					font-size: 64px;
+					color: $primary-color;
+					@include mobile {
+						font-size: 32px;
+					}
+					@include tablet {
+						font-size: 48px;
+					}
+				}
+
+				& p {
+					color: $gray-color;
+					font-size: 24px;
+					@include mobile {
+						font-size: 16px;
+					}
+					@include tablet {
+						font-size: 20px;
+					}
+				}
+			}
+
+			&-text2 {
+				position: absolute;
+				top: 5%;
+				right: 60%;
+				text-align: left;
+				width: 560px;
+				@include mobile {
+					right: 0;
+					text-align: left;
+					width: unset !important;
+					padding: 0 10px;
+				}
+				@include tablet {
+					right: 0;
+					text-align: left;
+					width: unset !important;
+					padding: 0 10px;
+				}
+
+				& h1 {
+					font-weight: bold;
+					font-size: 64px;
+					color: $primary-color;
+					@include mobile {
+						font-size: 32px;
+					}
+					@include tablet {
+						font-size: 48px;
+					}
+				}
+
+				& p {
+					color: $gray-color;
+					font-size: 24px;
+					@include mobile {
+						font-size: 16px;
+					}
+					@include tablet {
+						font-size: 20px;
+					}
+				}
+			}
+
+			&-text3 {
+				position: absolute;
+				top: 10%;
+				left: 60%;
+				text-align: right;
+				width: 550px;
+				@include mobile {
+					left: 0;
+					text-align: right;
+					width: 100% !important;
+					padding: 0 10px;
+				}
+				@include tablet {
+					left: 0;
+					text-align: right;
+					width: 100% !important;
+					padding: 0 10px;
+				}
+
+				& h1 {
+					font-weight: bold;
+					font-size: 64px;
+					color: $primary-color;
+					@include mobile {
+						font-size: 32px;
+					}
+					@include tablet {
+						font-size: 48px;
+					}
+				}
+
+				& p {
+					color: $gray-color;
+					font-size: 24px;
+					padding-top: 5px;
+					@include mobile {
+						font-size: 16px;
+					}
+					@include tablet {
+						font-size: 20px;
+					}
+				}
+
+				.our-brand-location a {
+					display: block;
+					color: $txt-white;
+					font-size: 24px;
+					padding-top: 5px;
+					text-decoration: none;
+					cursor: pointer;
+					transition: 0.1;
+
+					&:hover {
+						text-decoration: underline;
+					}
+					@include mobile {
+						font-size: 16px;
+					}
+					@include tablet {
+						font-size: 20px;
+					}
+				}
+
+				.our-brand-btn {
+					padding-top: 150px;
+					@include mobile {
+						padding-top: 20px;
+					}
+					.css-1rbyoir-MuiButtonBase-root-MuiButton-root,
+					.css-q3pbko-MuiButtonBase-root-MuiButton-root {
+						@include mobile {
+							width: 100% !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

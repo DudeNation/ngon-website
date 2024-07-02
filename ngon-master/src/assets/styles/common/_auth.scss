@@ -1,0 +1,189 @@
+// login
+.login {
+	background-color: $gray-color;
+	width: 600px;
+	height: 100vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 110px 50px 80px 50px;
+	@include mobile {
+		width: 100%;
+		height: auto;	
+		padding: 0 10px;
+	}
+
+	.forgot-pass {
+		margin-top: 5px;
+
+		a {
+			color: $second-color;
+		}
+		
+		@include mobile {
+			font-size: 14px;
+		}
+	}
+
+	&-or {
+		width: 100%;
+		margin-top: 32px;
+		text-align: center;
+		border-bottom: 1px solid $txt-black;
+		line-height: 0.1em;
+
+		& span {
+			color: $txt-gray2;
+			background: $gray-color;
+			padding: 0 10px;
+			font-weight: bold;
+		}
+	}
+
+	&-other {
+		margin-top: 24px;
+
+		&-gg {
+			@include flex(center,center);
+			img {
+				width: 20px;
+				height: 20px;
+				object-fit: contain;
+			}
+		}
+
+		&-fb {
+			@include flex(center,center);
+			img {
+				width: 20px;
+				height: 20px;
+				object-fit: contain;
+			}
+		}
+	}
+}
+
+// sign-up
+.register {
+	background-color: $gray-color;
+	width: 600px;
+	min-height: 100vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 150px 50px 80px 50px;
+	@include mobile {
+		width: 100%;
+		padding-right: 10px;
+		padding-left: 10px;
+		padding-top: 120px;
+		padding-bottom: 0;
+	}
+
+	.term {
+		@include flex(center, flex-start);
+		font-size: 12px;
+		margin-bottom: 5px;
+		color: $txt-gray2;
+
+		a {
+			color: $primary-color !important;
+		}
+	}
+
+	&-or {
+		width: 100%;
+		margin-top: 48px;
+		text-align: center;
+		border-bottom: 1px solid $txt-black;
+		line-height: 0.1em;
+
+		& span {
+			color: $txt-gray2;
+			background: $gray-color;
+			padding: 0 10px;
+			font-weight: bold;
+		}
+	}
+
+	&-other {
+		margin-top: 24px;
+
+		&-gg {
+			@include flex(center,center);
+			img {
+				width: 20px;
+				height: 20px;
+				object-fit: contain;
+			}
+		}
+
+		&-fb {
+			@include flex(center,center);
+			img {
+				width: 20px;
+				height: 20px;
+				object-fit: contain;
+			}
+		}
+	}
+}
+
+// forgot-password
+.forgotpass {
+	background-color: $gray-color;
+	width: 600px;
+	height: 100vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 150px 50px 80px 50px;
+
+	@include mobile {
+		width: 100%;
+		padding-right: 10px;
+		padding-left: 10px;
+		padding-top: 120px;
+		padding-bottom: 0;
+	}
+
+	&-or {
+		width: 100%;
+		margin-top: 80px;
+		text-align: center;
+		border-bottom: 1px solid $txt-black;
+		line-height: 0.1em;
+
+		& span {
+			color: $txt-gray2;
+			background: $gray-color;
+			padding: 0 10px;
+			font-weight: bold;
+		}
+	}
+
+	&-other {
+		margin-top: 24px;
+
+		&-gg {
+			@include flex(center,center);
+			img {
+				width: 20px;
+				height: 20px;
+				object-fit: contain;
+			}
+		}
+
+		&-fb {
+			@include flex(center,center);
+			img {
+				width: 20px;
+				height: 20px;
+				object-fit: contain;
+			}
+		}
+	}
+}

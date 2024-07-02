@@ -1,0 +1,41 @@
+.footer {
+	@include flex (center, space-between);
+	padding: 10px 20px;
+	width: 100%;
+	background-color: $second-color;
+	color: $white-color;
+	font-weight: 200;
+
+	@include mobile {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	&-left{
+		padding: 5px;
+		&-hour {
+			@include flex (center, space-between);
+			margin-top: 10px;
+		}
+		
+	}
+
+	&-center {
+		@include mobile {
+			padding: 15px 0;
+		}
+	}
+
+	&-right{
+		@include flex (center, center);
+
+		& p {
+			padding: 0 10px;
+			cursor: pointer;
+		}
+
+		@include mobile {
+			margin: 0 auto;
+		}
+	}
+}
