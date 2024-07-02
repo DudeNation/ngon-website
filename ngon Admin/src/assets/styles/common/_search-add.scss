@@ -1,0 +1,35 @@
+.search-add {
+    @include flex(center,center);
+margin : 5px;
+
+    .searchbar {
+        @include flex(center, start);
+        min-width: 10px;
+        border-radius: 10px;
+        color: $primary-color;
+        font-size: 20px;
+        padding: 5px;
+        width: 50vh;
+        margin-right : 15px;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .search-button {
+       @include flex(center, start);
+       min-width: 70px;
+      
+       border-radius: 10px;
+       color: $white-color;
+       font-size: 20px;
+       padding: 5px;
+       width: auto;
+       border: none;
+       background-color: $primary-color;
+
+        &:hover {
+            background-color: $second-color;
+        }
+    }
+}

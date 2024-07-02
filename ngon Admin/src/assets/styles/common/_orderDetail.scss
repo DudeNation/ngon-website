@@ -1,0 +1,20 @@
+
+.my-order-summary {
+    &-main {
+        background-color: #F5F5F5;
+        border-radius: 10px;
+        padding: 10px 16px;
+        .main-item {
+            @include flex(center, space-between);
+            color: $txt-gray;
+            margin: 8px 0;
+        }
+
+        .main-item-coupon,
+        .main-item-total {
+            color: $primary-color;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}
